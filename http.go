@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/kevinburke/rest"
+	"github.com/kevinburke/rest/restclient"
 )
 
 const Version = "0.1"
@@ -18,8 +18,8 @@ func init() {
 }
 
 func New(token string) *Client {
-	restClient := rest.NewBearerClient(token, baseURL)
-	restClient.UploadType = rest.FormURLEncoded
+	restClient := restclient.NewBearerClient(token, baseURL)
+	restClient.UploadType = restclient.FormURLEncoded
 	c := &Client{
 		Client:  restClient,
 		baseURL: baseURL,
@@ -32,7 +32,7 @@ func New(token string) *Client {
 const baseURL = "https://api.slack.com"
 
 type Client struct {
-	*rest.Client
+	*restclient.Client
 	baseURL string
 
 	Chat  *ChatService
