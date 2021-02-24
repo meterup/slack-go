@@ -2,7 +2,6 @@ package slack
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 	"strings"
 
@@ -14,7 +13,7 @@ const Version = "0.1"
 var userAgent string
 
 func init() {
-	userAgent = fmt.Sprintf("slack-go/%s", Version)
+	userAgent = "slack-go/" + Version
 }
 
 func New(token string) *Client {
@@ -57,11 +56,10 @@ func (c *Client) MakeRequest(ctx context.Context, method string, pathPart string
 	if method == "GET" && data != nil {
 		pathPart = pathPart + "?" + data.Encode()
 	}
-	req, err := c.NewRequest(method, pathPart, rb)
+	req, err := c.NewRequestWithContext(ctx, method, pathPart, rb)
 	if err != nil {
 		return err
 	}
-	req = req.WithContext(ctx)
 	if ua := req.Header.Get("User-Agent"); ua == "" {
 		req.Header.Set("User-Agent", userAgent)
 	} else {
