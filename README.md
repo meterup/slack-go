@@ -1,3 +1,9 @@
 # slack-go
 
-All API's should be treated as experimental until further notice
+Connect to the Slack API.
+
+# Install
+```
+go mod init
+go mod tidy
+```
