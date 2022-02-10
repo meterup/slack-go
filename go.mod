@@ -1,4 +1,4 @@
-module slack-go
+module github.com/meterup/slack-go
 
 go 1.17
 
