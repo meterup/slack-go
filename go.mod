@@ -1,5 +1,5 @@
 module github.com/meterup/slack-go
 
-go 1.17
+go 1.20
 
-require github.com/kevinburke/rest v0.0.0-20210506044642-5611499aa33c
+require github.com/kevinburke/rest v0.0.0-20230306061549-8f487d822ad0
