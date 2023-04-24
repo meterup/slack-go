@@ -8,7 +8,7 @@ import (
 	"github.com/kevinburke/rest/restclient"
 )
 
-const Version = "0.1"
+const Version = "0.1.1"
 
 var userAgent string
 
