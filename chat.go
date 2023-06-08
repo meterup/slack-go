@@ -31,6 +31,17 @@ func (c *ChatService) PostMessage(ctx context.Context, data url.Values) (*respon
 	return resp, err
 }
 
+// https://api.slack.com/methods/chat.delete
+func (c *ChatService) DeleteMessage(ctx context.Context, channelID, messageID string) (*response, error) {
+	data := url.Values{
+		"channel": []string{channelID},
+		"ts":      []string{messageID},
+	}
+	resp := new(response)
+	err := c.client.CreateResource(ctx, "/api/chat.delete", data, resp) // Delete is a POST
+	return resp, err
+}
+
 // https://api.slack.com/methods/chat.getPermalink
 //
 // `channelID` has to be the ID of the channel (C*), this endpoint does not
